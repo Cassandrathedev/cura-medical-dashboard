@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cura — Clinical Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">✚</div>
+        <span class="brand-name">Cura</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-btn active" data-target="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-btn" data-target="appointments">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Appointments</span>
+        </button>
+        <button class="nav-btn" data-target="patients">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Patients</span>
+        </button>
+        <button class="nav-btn" data-target="mood">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          <span>Mood Tracker</span>
+        </button>
+        <button class="nav-btn" data-target="reports">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <span>Reports</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-avatar">DR</div>
+        <div class="sidebar-user-info">
+          <span class="sidebar-name">Dr. Reynolds</span>
+          <span class="sidebar-role">Clinical Psychologist</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ── MAIN WRAP ── -->
+    <div class="main-wrap">
+
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <h1 class="topbar-title" id="page-title">Dashboard</h1>
+        <div class="topbar-right">
+          <div class="search-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="search-input" id="search-input" placeholder="Search patients..." />
+          </div>
+          <button class="icon-btn" id="theme-toggle" title="Toggle theme">
+            <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button class="icon-btn notif-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="notif-dot"></span>
+          </button>
+          <div class="topbar-avatar">DR</div>
+        </div>
+      </header>
+
+      <!-- ── CONTENT ── -->
+      <main class="content">
+
+        <!-- DASHBOARD -->
+        <section class="page" id="dashboard">
+          <div class="page-header">
+            <div>
+              <p class="page-eyebrow" id="dash-date"></p>
+              <h2 class="page-heading">Good morning, Dr. Reynolds</h2>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon stat-icon--blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <div class="stat-info">
+                <p class="stat-label">Total Patients</p>
+                <p class="stat-value">8</p>
+                <p class="stat-change positive">+2 this month</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon stat-icon--teal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="16" y1="2" x2="16" y2="6"/></svg>
+              </div>
+              <div class="stat-info">
+                <p class="stat-label">Today's Appointments</p>
+                <p class="stat-value">3</p>
+                <p class="stat-change">Next at 9:00 AM</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon stat-icon--amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div class="stat-info">
+                <p class="stat-label">Avg Mood Score</p>
+                <p class="stat-value">6.0<span class="stat-unit">/10</span></p>
+                <p class="stat-change positive">+0.4 from last week</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon stat-icon--danger">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="stat-info">
+                <p class="stat-label">Critical Cases</p>
+                <p class="stat-value">1</p>
+                <p class="stat-change danger">Requires attention</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-grid">
+            <div class="panel">
+              <div class="panel-head">
+                <h3 class="panel-title">Today's Schedule</h3>
+                <button class="panel-link" data-target="appointments">View all</button>
+              </div>
+              <div id="today-appts"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head">
+                <h3 class="panel-title">Recent Activity</h3>
+              </div>
+              <div id="recent-activity"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- APPOINTMENTS -->
+        <section class="page hidden" id="appointments">
+          <div class="page-header">
+            <div>
+              <p class="page-eyebrow">Schedule</p>
+              <h2 class="page-heading">Appointments</h2>
+            </div>
+          </div>
+          <div class="appt-layout">
+            <div class="panel calendar-panel">
+              <div class="panel-head">
+                <h3 class="panel-title" id="cal-title"></h3>
+                <div class="cal-nav">
+                  <button class="icon-btn" id="cal-prev">&#8249;</button>
+                  <button class="icon-btn" id="cal-next">&#8250;</button>
+                </div>
+              </div>
+              <div class="calendar" id="calendar"></div>
+            </div>
+            <div class="panel appt-list-panel">
+              <div class="panel-head">
+                <h3 class="panel-title">Upcoming</h3>
+              </div>
+              <div id="appt-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PATIENTS -->
+        <section class="page hidden" id="patients">
+          <div class="page-header">
+            <div>
+              <p class="page-eyebrow">Records</p>
+              <h2 class="page-heading">Patients</h2>
+            </div>
+          </div>
+          <div class="patients-bar">
+            <div class="search-wrap">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" class="search-input" id="patient-search" placeholder="Search by name or condition..." />
+            </div>
+            <div class="filter-btns">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="active">Active</button>
+              <button class="filter-btn" data-filter="stable">Stable</button>
+              <button class="filter-btn" data-filter="critical">Critical</button>
+            </div>
+          </div>
+          <div class="patients-grid" id="patients-grid"></div>
+        </section>
+
+        <!-- MOOD TRACKER -->
+        <section class="page hidden" id="mood">
+          <div class="page-header">
+            <div>
+              <p class="page-eyebrow">Analytics</p>
+              <h2 class="page-heading">Mood Tracker</h2>
+            </div>
+          </div>
+          <div class="mood-controls">
+            <label class="form-label" for="mood-patient">View patient:</label>
+            <select class="form-select" id="mood-patient">
+              <option value="all">All Patients (Average)</option>
+            </select>
+            <select class="form-select" id="mood-range">
+              <option value="7">Last 7 days</option>
+              <option value="14">Last 14 days</option>
+              <option value="30">Last 30 days</option>
+            </select>
+          </div>
+          <div class="panel chart-panel">
+            <div class="panel-head">
+              <h3 class="panel-title">Mood Trend</h3>
+              <div class="chart-legend" id="mood-legend"></div>
+            </div>
+            <canvas id="moodChart" height="100"></canvas>
+          </div>
+          <div class="mood-summary" id="mood-summary"></div>
+        </section>
+
+        <!-- REPORTS -->
+        <section class="page hidden" id="reports">
+          <div class="page-header">
+            <div>
+              <p class="page-eyebrow">Insights</p>
+              <h2 class="page-heading">Reports</h2>
+            </div>
+          </div>
+          <div class="reports-grid">
+            <div class="panel chart-panel">
+              <div class="panel-head">
+                <h3 class="panel-title">Appointments This Week</h3>
+              </div>
+              <canvas id="apptChart" height="120"></canvas>
+            </div>
+            <div class="panel chart-panel">
+              <div class="panel-head">
+                <h3 class="panel-title">Diagnosis Breakdown</h3>
+              </div>
+              <canvas id="diagChart" height="120"></canvas>
+            </div>
+          </div>
+          <div class="report-stats" id="report-stats"></div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
